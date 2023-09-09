@@ -30,7 +30,7 @@ function convertPokemonToLi(pokemon) {
 
             
             <div class="clash-card__unit-description">
-            <p class="type">The Barbarian is a kilt-clad Scottish warrior with an angry, battle-ready expression, hungry for destruction. He has Killer yellow horseshoe mustache.
+            <p class="type">TLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
             </div></p>
               
       
