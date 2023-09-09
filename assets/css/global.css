@@ -1,14 +1,23 @@
-* {
-    font-family: 'Roboto', sans-serif;
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+
+*, *:before, *:after {
     box-sizing: border-box;
+    list-style: none;
+  }
+
+img {
+    width: 100%;
 }
 
 body {
-    background-color: #f6f8fc;
+    font: 14px/20px "Lato", Arial, sans-serif;
+    color: #9E9E9E;
+    margin-top: 30px;
 }
 
 .content {
-    width: 100vw;
+    /* width: 100vw; */
     height: 100vh;
     padding: 1rem;
     background-color: #fff;
@@ -22,3 +31,4 @@ body {
         border-radius: 1rem;
     }
 }
+

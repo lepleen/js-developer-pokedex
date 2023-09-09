@@ -1,6 +1,7 @@
 
 const pokeApi = {}
 
+//converte os detalhes API para a solicitacao do pokemon-model.js
 function convertPokeApiDetailToPokemon(pokeDetail) {
     const pokemon = new Pokemon()
     pokemon.number = pokeDetail.id
@@ -17,19 +18,23 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
     return pokemon
 }
 
+//Detalhes de pokemons
 pokeApi.getPokemonDetail = (pokemon) => {
     return fetch(pokemon.url)
-        .then((response) => response.json())
-        .then(convertPokeApiDetailToPokemon)
+        .then((response) => response.json())//converte a PROMISSES em json
+        .then(convertPokeApiDetailToPokemon)//funcao que converteu do POKE API para o modelo interno
 }
 
-pokeApi.getPokemons = (offset = 0, limit = 5) => {
+
+    // solicita uma promisse que tras uma quantidade de Pokemons por pagina
+pokeApi.getPokemons = (offset = 0, limit = 1) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
 
-    return fetch(url)
-        .then((response) => response.json())
-        .then((jsonBody) => jsonBody.results)
-        .then((pokemons) => pokemons.map(pokeApi.getPokemonDetail))
-        .then((detailRequests) => Promise.all(detailRequests))
-        .then((pokemonsDetails) => pokemonsDetails)
+    //Funcao de conversao - retorna convertido 
+    return fetch(url)//busca a lista de pokemons
+        .then((response) => response.json()) //recebe a resposta e coverte
+        .then((jsonBody) => jsonBody.results)//pega a lista de pokemons
+        .then((pokemons) => pokemons.map(pokeApi.getPokemonDetail))//converte a lista de pokemons em uma nova lista de detalhes de pokemon
+        .then((detailRequests) => Promise.all(detailRequests))//espera que as PROMISSES terminem
+        .then((pokemonsDetails) => pokemonsDetails)//lista de detalhes finais
 }

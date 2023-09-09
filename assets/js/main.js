@@ -1,25 +1,60 @@
+
 const pokemonList = document.getElementById('pokemonList')
 const loadMoreButton = document.getElementById('loadMoreButton')
+const loadMinusButton = document.getElementById('loadMinusButton')
+
 
 const maxRecords = 151
-const limit = 10
+const limit = 1
 let offset = 0;
 
 function convertPokemonToLi(pokemon) {
     return `
-        <li class="pokemon ${pokemon.type}">
-            <span class="number">#${pokemon.number}</span>
-            <span class="name">${pokemon.name}</span>
-
-            <div class="detail">
-                <ol class="types">
-                    ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
-                </ol>
-
-                <img src="${pokemon.photo}"
+    <div class=" slide-container">
+  
+        <div class="wrapper">
+          <div class="clash-card barbarian">
+            <div class="pokemon ${pokemon.type}">
+              <img src="${pokemon.photo}"
                      alt="${pokemon.name}">
             </div>
-        </li>
+            <div class="number">#${pokemon.number}</div>
+            <div class="detail">
+                <ol class="types">
+                ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+                </ol>
+            </div>
+           
+            <div class="clash-card__unit-name">${pokemon.name}</div>
+            <div class="type">${pokemon.type}</div>
+
+            
+            <div class="clash-card__unit-description">
+            <p class="type">The Barbarian is a kilt-clad Scottish warrior with an angry, battle-ready expression, hungry for destruction. He has Killer yellow horseshoe mustache.
+            </div></p>
+              
+      
+            <div class=" ${pokemon.type} clash-card__unit-stats clash-card__unit-stats--barbarian clearfix">
+              <div class="one-third">
+                <div class="stat">20<sup>S</sup></div>
+                <div class="stat-value">Training</div>
+              </div>
+      
+              <div class="one-third">
+                <div class="stat">16</div>
+                <div class="stat-value">Speed</div>
+              </div>
+      
+              <div class="one-third no-border">
+                <div class="stat">test</div>
+                <div class="stat-value">ID</div>
+              </div>
+      
+            </div>
+      
+          </div> <!-- end clash-card barbarian-->
+        </div> <!-- end wrapper -->
+    
     `
 }
 
@@ -45,3 +80,5 @@ loadMoreButton.addEventListener('click', () => {
         loadPokemonItens(offset, limit)
     }
 })
+
+
